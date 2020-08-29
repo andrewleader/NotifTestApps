@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="6.1.1" />
+    <PackageReference Include="aleader.Microsoft.Toolkit.Uwp.Notifications" Version="7.0.0-build.184.g84b9bf3458" />
     <PackageReference Include="QueryString.NET" Version="1.0.0" />
   </ItemGroup>
 
