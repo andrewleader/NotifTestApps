@@ -39,14 +39,14 @@ namespace WPF.NetFramework.ToastCompat
             string image = "https://picsum.photos/364/202?image=883";
             int conversationId = 5;
 
-            // Construct the toast content
-            ToastContent toastContent = new ToastContentBuilder()
+            // Construct the toast content and show it!
+            new ToastContentBuilder()
                 .AddToastActivationInfo(new QueryString()
                 {
                     { "action", "viewConversation" },
                     { "conversationId", conversationId.ToString() }
 
-                }.ToString(), ToastActivationType.Foreground) // Arguments when the user taps body of toast
+                }.ToString()) // Arguments when the user taps body of toast
                 .AddText(title)
                 .AddText(content)
                 .AddInlineImage(new Uri(await DownloadImageToDisk(image)))
@@ -73,13 +73,7 @@ namespace WPF.NetFramework.ToastCompat
                     { "imageUrl", image }
 
                 }.ToString()))
-                .GetToastContent();
-
-            // And create the toast notification
-            var toast = new ToastNotification(toastContent.GetXml());
-
-            // And then show it
-            ToastNotificationManagerCompat.CreateToastNotifier().Show(toast);
+                .Show();
         }
 
         private static bool _hasPerformedCleanup;

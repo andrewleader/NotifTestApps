@@ -1,13 +1,6 @@
 ﻿using Microsoft.QueryStringDotNET;
 using Microsoft.Toolkit.Uwp.Notifications;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using Windows.UI.Notifications;
 
 namespace WPF.NetFramework.ToastCompat
 {
@@ -137,17 +130,11 @@ namespace WPF.NetFramework.ToastCompat
 
         private void ShowToast(string msg)
         {
-            // Construct the visuals of the toast
-            ToastContent toastContent = new ToastContentBuilder()
-                .AddToastActivationInfo("action=ok", ToastActivationType.Foreground)
+            // Construct the visuals of the toast and show it!
+            new ToastContentBuilder()
+                .AddToastActivationInfo("action=ok")
                 .AddText(msg)
-                .GetToastContent();
-
-            // And create the toast notification
-            var toast = new ToastNotification(toastContent.GetXml());
-
-            // And then show it
-            ToastNotificationManagerCompat.CreateToastNotifier().Show(toast);
+                .Show();
         }
     }
 }

@@ -151,7 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="aleader.Microsoft.Toolkit.Uwp.Notifications">
-      <Version>7.0.0-build.184.g84b9bf3458</Version>
+      <Version>7.0.0-build.199.g528b661d96</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>

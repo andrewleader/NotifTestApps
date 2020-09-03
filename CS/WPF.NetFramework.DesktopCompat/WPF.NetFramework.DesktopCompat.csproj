@@ -98,6 +98,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="aleader.Microsoft.Toolkit.Uwp.Notifications">
+      <Version>7.0.0-build.199.g528b661d96</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
       <Version>6.1.1</Version>
     </PackageReference>
