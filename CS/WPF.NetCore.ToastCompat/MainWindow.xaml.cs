@@ -1,22 +1,11 @@
-﻿using Microsoft.QueryStringDotNET;
-using Microsoft.Toolkit.Uwp.Notifications;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Windows.UI.Notifications;
 
 namespace WPF.NetCore.ToastCompat
 {
@@ -41,38 +30,27 @@ namespace WPF.NetCore.ToastCompat
 
             // Construct the toast content and show it!
             new ToastContentBuilder()
-                .AddToastActivationInfo(new QueryString()
-                {
-                    { "action", "viewConversation" },
-                    { "conversationId", conversationId.ToString() }
-
-                }.ToString()) // Arguments when the user taps body of toast
+                .AddToastActivationInfo(new ToastArguments()
+                    .Set("action", "viewConversation")
+                    .Set("conversationId", conversationId)) // Arguments when the user taps body of toast
                 .AddText(title)
                 .AddText(content)
                 .AddInlineImage(new Uri(await DownloadImageToDisk(image)))
                 .AddAppLogoOverride(new Uri(await DownloadImageToDisk("https://unsplash.it/64?image=1005")), ToastGenericAppLogoCrop.Circle)
                 .AddInputTextBox("tbReply", "Type a reply")
 
-                // Note that there's no reason to specify background activation, since our COM
-                // activator decides whether to process in background or launch foreground window
-                .AddButton(new ToastButton("Reply", new QueryString()
-                {
-                    { "action", "reply" },
-                    { "conversationId", conversationId.ToString() }
+                .AddButton("Reply", ToastActivationType.Background, new ToastArguments()
+                    .Set("action", "reply")
+                    .Set("conversationId", conversationId))
 
-                }.ToString()))
-                .AddButton(new ToastButton("Like", new QueryString()
-                {
-                    { "action", "like" },
-                    { "conversationId", conversationId.ToString() }
+                .AddButton("Like", ToastActivationType.Background, new ToastArguments()
+                    .Set("action", "like")
+                    .Set("conversationId", conversationId))
 
-                }.ToString()))
-                .AddButton(new ToastButton("View", new QueryString()
-                {
-                    { "action", "viewImage" },
-                    { "imageUrl", image }
+                .AddButton("View", ToastActivationType.Foreground, new ToastArguments()
+                    .Set("action", "viewImage")
+                    .Set("imageUrl", image))
 
-                }.ToString()))
                 .Show();
         }
 

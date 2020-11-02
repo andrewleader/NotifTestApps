@@ -1,5 +1,4 @@
-﻿using Microsoft.QueryStringDotNET;
-using Microsoft.Toolkit.Uwp.Notifications;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
 using System.Windows;
 
 namespace WPF.NetCore.ToastCompat
@@ -40,8 +39,8 @@ namespace WPF.NetCore.ToastCompat
                     return;
                 }
 
-                // Parse the query string (using NuGet package QueryString.NET)
-                QueryString args = QueryString.Parse(e.Argument);
+                // Parse the arguments
+                var args = ToastArguments.Parse(e.Argument);
 
                 // See what action is being requested 
                 switch (args["action"])
@@ -64,7 +63,7 @@ namespace WPF.NetCore.ToastCompat
                     case "viewConversation":
 
                         // The conversation ID retrieved from the toast args
-                        int conversationId = int.Parse(args["conversationId"]);
+                        int conversationId = args.GetInt("conversationId");
 
                         // Make sure we have a window open and in foreground
                         OpenWindowIfNeeded();
