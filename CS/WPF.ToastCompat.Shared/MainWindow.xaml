@@ -48,6 +48,12 @@
               Content="Progress bar toast"
               Click="ButtonProgressToast_Click"
               Margin="0,0,6,0"/>
+          <Button
+              Grid.Column="1"
+              x:Name="ButtonPopToastFromNetStandard14"
+              Content="Toast from .NET Standard 1.4"
+              Click="ButtonPopToastFromNetStandard14_Click"
+              Margin="6,0,6,0"/>
         </Grid>
       </StackPanel>
 

@@ -20,7 +20,11 @@ namespace ToastCompat
 
             // Construct the toast content and show it!
             new ToastContentBuilder()
+#if USING_WINRT_VERSION
+                .AddArgument("action", "viewConversation")
+#else
                 .AddArgument("action", MyToastActions.ViewConversation)
+#endif
                 .AddArgument("conversationId", conversationId)
                 .AddText(title)
                 .AddText(content)
@@ -30,17 +34,29 @@ namespace ToastCompat
 
                 .AddButton(new ToastButton()
                     .SetContent("Reply")
+#if USING_WINRT_VERSION
+                    .AddArgument("action", "reply")
+#else
                     .AddArgument("action", MyToastActions.Reply)
+#endif
                     .SetBackgroundActivation())
 
                 .AddButton(new ToastButton()
                     .SetContent("Like")
+#if USING_WINRT_VERSION
+                    .AddArgument("action", "like")
+#else
                     .AddArgument("action", MyToastActions.Like)
+#endif
                     .SetBackgroundActivation())
 
                 .AddButton(new ToastButton()
                     .SetContent("View")
+#if USING_WINRT_VERSION
+                    .AddArgument("action", "viewImage")
+#else
                     .AddArgument("action", MyToastActions.ViewImage)
+#endif
                     .AddArgument("imageUrl", image))
 
                 .Show();
@@ -109,7 +125,11 @@ namespace ToastCompat
             new ToastContentBuilder()
 
                 // Arguments that are returned when the user clicks the toast or a button
+#if USING_WINRT_VERSION
+                .AddArgument("action", "viewConversation")
+#else
                 .AddArgument("action", MyToastActions.ViewConversation)
+#endif
                 .AddArgument("conversationId", 7764)
 
                 .AddText("Scheduled toast notification")
@@ -122,12 +142,20 @@ namespace ToastCompat
             const string tag = "progressToast";
 
             new ToastContentBuilder()
+#if USING_WINRT_VERSION
+                .AddArgument("action", "viewConversation")
+#else
                 .AddArgument("action", MyToastActions.ViewConversation)
+#endif
                 .AddArgument("conversationId", 423)
                 .AddText("Sending image to conversation...")
                 .AddVisualChild(new AdaptiveProgressBar()
                 {
+#if USING_WINRT_VERSION
+                    Value = AdaptiveProgressBarValue.FromBinding("progress"),
+#else
                     Value = new BindableProgressBarValue("progress"),
+#endif
                     Status = "Sending..."
                 })
                 .Show(toast =>
@@ -156,13 +184,25 @@ namespace ToastCompat
             }
 
             new ToastContentBuilder()
+#if USING_WINRT_VERSION
+                .AddArgument("action", "viewConversation")
+#else
                 .AddArgument("action", MyToastActions.ViewConversation)
+#endif
                 .AddArgument("conversationId", 423)
                 .AddText("Sent image to conversation!")
                 .Show(toast =>
                 {
                     toast.Tag = tag;
                 });
+        }
+
+        public static void PopToastFromNetStandard14()
+        {
+#if USING_WINRT_VERSION
+#else
+            ClassLibrary.Standard14.ClassLibraryStandard14.GenerateBasicToast().Show();
+#endif
         }
     }
 }

@@ -58,5 +58,10 @@ namespace ToastCompat
         {
             ToastHelpers.ShowProgressToast();
         }
+
+        private void ButtonPopToastFromNetStandard14_Click(object sender, RoutedEventArgs e)
+        {
+            ToastHelpers.PopToastFromNetStandard14();
+        }
     }
 }

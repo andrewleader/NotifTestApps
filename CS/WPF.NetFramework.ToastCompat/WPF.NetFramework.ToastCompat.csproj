@@ -80,8 +80,14 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
-      <Version>7.0.0-build.579.g3d0b67d699</Version>
+      <Version>7.0.0-build.579.g7680533fb1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary.Standard14\ClassLibrary.Standard14.csproj">
+      <Project>{1c511b08-6744-416a-a5ce-a9be9b621b9d}</Project>
+      <Name>ClassLibrary.Standard14</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\WPF.ToastCompat.Shared\WPF.ToastCompat.Shared.projitems" Label="Shared" />
   <Import Project="..\ToastCompat.Shared\ToastCompat.Shared.projitems" Label="Shared" />
