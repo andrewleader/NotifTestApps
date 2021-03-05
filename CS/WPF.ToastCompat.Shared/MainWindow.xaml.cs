@@ -16,6 +16,21 @@ namespace ToastCompat
             InitializeComponent();
 
             // IMPORTANT: Look at App.xaml.cs for activation
+
+            if (IsElevated)
+            {
+                ContentBody.Content = "Running as elevated";
+            }
+        }
+
+
+
+        private static bool IsElevated
+        {
+            get
+            {
+                return new System.Security.Principal.WindowsPrincipal(System.Security.Principal.WindowsIdentity.GetCurrent()).IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator);
+            }
         }
 
         private async void ButtonPopToast_Click(object sender, RoutedEventArgs e)
