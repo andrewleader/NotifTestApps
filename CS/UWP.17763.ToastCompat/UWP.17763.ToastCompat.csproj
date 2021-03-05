@@ -4,15 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{9B26E416-2216-4281-A6E0-B514ADC52C1D}</ProjectGuid>
+    <ProjectGuid>{7FB84BC4-608B-4929-ACB3-8A6237321A94}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UWP.ToastCompat</RootNamespace>
-    <AssemblyName>UWP.ToastCompat</AssemblyName>
+    <RootNamespace>UWP._17763.ToastCompat</RootNamespace>
+    <AssemblyName>UWP.17763.ToastCompat</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -131,11 +131,14 @@
       <Version>6.2.10</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
-      <Version>7.0.0-build.579.g3d0b67d699</Version>
+      <Version>7.0.0-build.579.g7680533fb1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <ProjectReference Include="..\ClassLibrary.Standard14\ClassLibrary.Standard14.csproj">
+      <Project>{1c511b08-6744-416a-a5ce-a9be9b621b9d}</Project>
+      <Name>ClassLibrary.Standard14</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\ToastCompat.Shared\ToastCompat.Shared.projitems" Label="Shared" />
   <Import Project="..\ToastCompat.Shared.Uwp\ToastCompat.Shared.Uwp.projitems" Label="Shared" />
