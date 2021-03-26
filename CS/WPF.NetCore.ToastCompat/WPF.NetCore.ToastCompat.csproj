@@ -12,7 +12,7 @@
   <Import Project="..\ToastCompat.Shared\ToastCompat.Shared.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.0.0-build.579.g7680533fb1" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.0.0-preview5" />
   </ItemGroup>
 
   <ItemGroup>
